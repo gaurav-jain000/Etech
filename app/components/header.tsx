@@ -13,6 +13,7 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -24,14 +25,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import SignInFreeTrialCTA from "./sign-in-free-trial-cta";
 
 export default function Header() {
   return (
-    <header className="flex items-center max-md:justify-between gap-4 maximus py-12">
+    <header className="flex items-center justify-between gap-4 maximus py-4 md:py-12">
       <Logo />
       <Sheet>
         <SheetTrigger asChild className="md:hidden">
-          <Button size="icon" variant={"secondary"}>
+          <Button
+            size="icon"
+            variant={"secondary"}
+            className="bg-signature text-white"
+          >
             <MenuIcon />
           </Button>
         </SheetTrigger>
@@ -91,6 +97,9 @@ export default function Header() {
               })}
             </Accordion>
           </nav>
+          <SheetFooter>
+            <SignInFreeTrialCTA />
+          </SheetFooter>
         </SheetContent>
       </Sheet>
       <NavigationMenu viewport={false} className="max-md:hidden">
@@ -128,6 +137,7 @@ export default function Header() {
           })}
         </NavigationMenuList>
       </NavigationMenu>
+      <SignInFreeTrialCTA className="max-md:hidden" />
     </header>
   );
 }
