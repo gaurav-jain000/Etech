@@ -7,7 +7,7 @@ export default function SignInFreeTrialCTA({
   className?: string;
 }) {
   return (
-    <div className={"flex items-center max-md:flex-col gap-2 " + className}>
+    <div className={"flex md:items-center max-md:flex-col gap-2 " + className}>
       <Button
         size={"lg"}
         className="font-medium text-base bg-signature overflow-hidden px-0.5 py-0.5 h-auto"

@@ -11,7 +11,7 @@
 
 html,
 body {
-  @apply bg-[oklch(0.97_0.01_321.54)] dark:bg-gray-950;
+  @apply bg-[oklch(0.97_0.01_321.54)] dark:bg-gray-950 [--uni-padding-value:48px] md:[--uni-padding-value:64px];
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -140,6 +140,18 @@ body {
   @apply max-w-7xl mx-auto px-4;
 }
 
+.uni-padding-y {
+  @apply py-[var(--uni-padding-value)];
+}
+
+.uni-padding-b {
+  @apply pb-[var(--uni-padding-value)];
+}
+
+.uni-padding-t {
+  @apply pt-[var(--uni-padding-value)];
+}
+
 .bg-signature {
-  @apply bg-gradient-to-br from-[var(--theme-gradient-top-left)] to-[var(--theme-gradient-bottom-right)];
+  @apply bg-gradient-to-br from-[var(--theme-gradient-top-left)] from-30% to-[var(--theme-gradient-bottom-right)];
 }
