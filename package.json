@@ -3,9 +3,10 @@
   "type": "module",
   "description": "A clean, responsive, and modern landing page template for online education platforms, built with ReactJS, React Router v7, TypeScript, Shadcn UI, and Tailwind CSS.",
   "scripts": {
-    "build": "react-router build",
+    "build": "react-router build && node netlify/prepare.js",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "start": "netlify serve",
+    "start:dev": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
