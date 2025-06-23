@@ -20,6 +20,12 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
 import { Separator } from "~/components/ui/separator";
+import { motion } from "framer-motion";
+import {
+  popUpAnimationVariant,
+  slideLeftAnimationVariant,
+  slideUpAnimationVariant,
+} from "~/lib/animation";
 
 export function meta({}: MetaArgs) {
   return [
@@ -33,18 +39,26 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="grid md:grid-cols-2 items-center maximus md:gap-4 min-h-[80vh] pt-24">
-        <div className="flex flex-col max-md:items-center">
+        <motion.div
+          variants={slideUpAnimationVariant}
+          initial="initial"
+          animate="animate"
+          className="flex flex-col max-md:items-center"
+        >
           <div className="prose max-w-full prose-headings:my-3 md:prose-xl max-md:text-center">
-            <h1 className="font-bold">
+            <motion.h1 variants={slideUpAnimationVariant} className="font-bold">
               Develop your <br /> skills in a new & <br /> unique way
-            </h1>
-            <p className="text-sm">
+            </motion.h1>
+            <motion.p variants={slideUpAnimationVariant} className="text-sm">
               Explore a transformative approach to skill development on our
               online learning platform. Uncover a new realm of learning
               experiences and elevate your expertise in unique ways.
-            </p>
+            </motion.p>
           </div>
-          <div className="flex items-center gap-4 mt-6">
+          <motion.div
+            variants={slideUpAnimationVariant}
+            className="flex items-center gap-4 mt-6"
+          >
             <Button className="bg-signature rounded-sm text-base" size="lg">
               Enroll Now
             </Button>
@@ -56,15 +70,31 @@ export default function Home() {
               <PlayCircleIcon className="bg-[var(--theme-gradient-bottom-right)] rounded-full text-[var(--background)] size-[1.8em]" />
               What&apos;s Etech?
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         <div className="w-full grid place-items-center py-6">
-          <div className="w-[320px] max-h-[400px] bg-signature aspect-square rounded-full outline-dashed outline-2 outline-offset-8 outline-[var(--theme-gradient-top-left)]" />
+          <div className="max-lg:w-[320px] animate-spin [animation-duration:50s] max-h-[400px] lg:h-full xl:max-h-[560px] aspect-square rounded-full outline-dashed outline-2 outline-offset-8 outline-[var(--theme-gradient-top-left)]/70 bg-gradient-to-br from-[var(--theme-gradient-top-left)]/40 to-[var(--theme-gradient-bottom-right)]/40 overflow-hidden">
+            <img
+              src="/confident-woman.webp"
+              alt="confident-woman.webp"
+              className="size-full object-cover object-top animate-spin direction-reverse [animation-duration:50s]"
+            />
+          </div>
         </div>
       </section>
       {/* Clients */}
-      <section className="py-2 md:py-8 bg-signature">
-        <div className="px-4 flex items-center md:justify-evenly gap-4 max-md:overflow-x-scroll py-1 overflow-y-hidden md:w-full">
+      <motion.section
+        variants={slideUpAnimationVariant}
+        initial="initial"
+        animate="animate"
+        className="py-2 md:py-8 bg-signature"
+      >
+        <motion.div
+          variants={slideLeftAnimationVariant}
+          initial="initial"
+          animate="animate"
+          className="px-4 flex items-center md:justify-evenly gap-4 max-md:overflow-x-scroll py-1 overflow-y-hidden md:w-full"
+        >
           {[
             "Duolingo",
             "Magic Leap",
@@ -72,14 +102,24 @@ export default function Home() {
             "Codecov",
             "User Testing",
           ].map((brand) => (
-            <div className="text-white font-bold text-xl md:text-3xl whitespace-nowrap">
+            <motion.div
+              variants={slideLeftAnimationVariant}
+              key={brand}
+              className="text-white font-bold text-xl md:text-3xl whitespace-nowrap"
+            >
               {brand}
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
       {/* Search courses */}
-      <section className="maximus uni-padding-t">
+      <motion.section
+        variants={slideUpAnimationVariant}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ margin: "-190px 0px -230px 0px", once: true }}
+        className="maximus uni-padding-t"
+      >
         <div className="prose md:prose-xl max-w-full prose-headings:my-3 text-center md:mb-6">
           <h2>Search Courses</h2>
         </div>
@@ -102,17 +142,50 @@ export default function Home() {
             </Button>
           </form>
         </div>
-      </section>
+      </motion.section>
       {/* Benefits of Etech */}
-      <section className="maximus uni-padding-y grid md:grid-cols-2 md:gap-4">
-        <div className="w-full grid max-md:place-items-center md:justify-start md:items-center max-md:py-6">
+      <motion.section
+        variants={slideUpAnimationVariant}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ margin: "-190px 0px -230px 0px", once: true }}
+        className="maximus uni-padding-y grid md:grid-cols-2 md:gap-4"
+      >
+        <motion.div
+          variants={popUpAnimationVariant}
+          className="w-full grid max-md:place-items-center md:justify-start md:items-center max-md:py-6"
+        >
           <div className="[--collective-border-radius:64px] min-h-[320px] max-lg:max-w-[320px] lg:h-full aspect-square mx-auto rounded-[var(--collective-border-radius)] outline-dashed outline-2 outline-offset-8 outline-[var(--theme-gradient-top-left)] overflow-hidden grid grid-cols-2 grid-rows-2">
-            <div className="bg-[var(--theme-gradient-bottom-right)] rounded-br-[var(--collective-border-radius)]" />
-            <div className="bg-[var(--theme-gradient-top-left)] rounded-bl-[var(--collective-border-radius)]" />
-            <div className="bg-[var(--theme-gradient-top-left)] rounded-tr-[var(--collective-border-radius)]" />
-            <div className="bg-[var(--theme-gradient-bottom-right)] rounded-tl-[var(--collective-border-radius)]" />
+            <div className="bg-[var(--theme-gradient-bottom-right)] rounded-br-[var(--collective-border-radius)] flex flex-col justify-end overflow-hidden">
+              <img
+                src="/happy-student-1.webp"
+                alt="happy-student-1"
+                className="size-full object-cover object-top max-h-[200px]"
+              />
+            </div>
+            <div className="bg-[var(--theme-gradient-top-left)] rounded-bl-[var(--collective-border-radius)] flex flex-col justify-end overflow-hidden">
+              <img
+                src="/happy-student-2.webp"
+                alt="happy-student-2"
+                className="size-full object-cover object-top max-h-[200px]"
+              />
+            </div>
+            <div className="bg-[var(--theme-gradient-top-left)] rounded-tr-[var(--collective-border-radius)] flex flex-col justify-end overflow-hidden">
+              <img
+                src="/happy-student-3.webp"
+                alt="happy-student-3"
+                className="size-full object-cover object-top max-h-[200px] scale-[1.2]"
+              />
+            </div>
+            <div className="bg-[var(--theme-gradient-bottom-right)] rounded-tl-[var(--collective-border-radius)] flex flex-col justify-end overflow-hidden">
+              <img
+                src="/happy-student-4.webp"
+                alt="happy-student-4"
+                className="size-full object-cover object-top max-h-[200px]"
+              />
+            </div>
           </div>
-        </div>
+        </motion.div>
         <div>
           <div className="prose max-w-full prose-headings:my-3">
             <h2>
@@ -146,7 +219,8 @@ export default function Home() {
                   desc: "Dive into a vast library of over 1.5k video courses covering many subjects, offering a visual learning experience.",
                 },
               ].map((benefit) => (
-                <li
+                <motion.li
+                  variants={slideLeftAnimationVariant}
                   className="flex gap-2 items-start group ps-0"
                   key={benefit.title}
                 >
@@ -157,14 +231,20 @@ export default function Home() {
                     <h3>{benefit.title}</h3>
                     <p className="text-xs lg:text-sm">{benefit.desc}</p>
                   </div>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
         </div>
-      </section>
+      </motion.section>
       {/* Popular Courses */}
-      <section className="uni-padding-y bg-signature">
+      <motion.section
+        variants={slideUpAnimationVariant}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ margin: "-190px 0px -230px 0px", once: true }}
+        className="uni-padding-y bg-signature"
+      >
         <div className="maximus">
           <div className="md:pt-4 pb-6 md:pb-12 max-w-[500px] mx-auto prose prose-headings:my-2 md:prose-xl text-center prose-p:text-background">
             <h2 className="text-white">Our Popular Courses</h2>
@@ -210,9 +290,11 @@ export default function Home() {
                 teacher: "Rohan Desai",
               },
             ].map((course) => (
-              <div
+              <motion.div
+                variants={popUpAnimationVariant}
+                whileHover={{ scale: 1.05 }}
                 key={course.title}
-                className="p-2 bg-white rounded-3xl flex max-[530px]:flex-col min-[800px]:flex-col max-[530px]:gap-2 min-[800px]:gap-5 drop-shadow-sm"
+                className="p-2 bg-white rounded-3xl flex max-[530px]:flex-col min-[800px]:flex-col max-[530px]:gap-2 min-[800px]:gap-5 drop-shadow-sm origin-bottom"
               >
                 <div className="rounded-2xl w-full min-[530px]:max-[800px]:flex-[0_0_50%] aspect-[4/3] overflow-hidden relative">
                   <img
@@ -224,7 +306,7 @@ export default function Home() {
                 <div className="min-[530px]:max-[800px]:space-y-4 max-[530px]:contents min-[530px]:max-[800px]:flex-[0_0_50%] min-[530px]:max-[800px]:flex min-[530px]:max-[800px]:justify-center min-[530px]:max-[800px]:flex-col min-[800px]:contents">
                   <div className="flex items-center justify-between px-3">
                     <Button
-                      className="bg-[var(--theme-gradient-top-left)]/40 text-black gap-0 justify-start! ps-0! pe-1 lg:pe-3!"
+                      className="bg-[var(--theme-gradient-top-left)]/40 text-black gap-0 justify-start! ps-0! pe-1 lg:pe-3! hover:bg-gray-200"
                       size="sm"
                     >
                       <DotIcon className="text-[var(--theme-gradient-top-left)] size-[1.4em] lg:size-[2em]" />
@@ -264,27 +346,38 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
       {/* Join as an Instructor */}
-      <section className="maximus uni-padding-y grid md:grid-cols-2 items-center gap-8">
+      <motion.section
+        variants={slideUpAnimationVariant}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ margin: "-190px 0px -230px 0px", once: true }}
+        className="maximus uni-padding-y grid md:grid-cols-2 items-center gap-8 min-h-[70vh]"
+      >
         <div>
           <div className="prose max-w-full md:prose-xl prose-h2:mt-0 prose-h2:mb-3 prose-p:mb-0 prose-h3:mb-0 prose-h3:mt-2">
-            <h2>
+            <motion.h2 variants={slideLeftAnimationVariant}>
               If You Are A Certified Teacher <br /> Then{" "}
               <span className="bg-signature text-transparent bg-clip-text">
                 Join Us As An Instructor
               </span>
-            </h2>
-            <p className="text-xs md:text-sm max-w-[400px]">
+            </motion.h2>
+            <motion.p
+              variants={slideLeftAnimationVariant}
+              className="text-xs md:text-sm max-w-[400px]"
+            >
               Unlock the opportunity to inspire and educate by joining our team
               of instructors. If you're a certified teacher, elevate your impact
               and share your expertise with learners worldwide.
-            </p>
-            <h3>Enjoy Many Perks</h3>
+            </motion.p>
+            <motion.h3 variants={slideLeftAnimationVariant}>
+              Enjoy Many Perks
+            </motion.h3>
             <ul className="grid grid-cols-2 gap-x-4 ps-5">
               {[
                 "Global Impact",
@@ -296,22 +389,41 @@ export default function Home() {
                 "Professional Development",
                 "Networking Opportunities",
               ].map((perk) => (
-                <li
+                <motion.li
+                  variants={slideUpAnimationVariant}
                   className="text-xs md:text-sm my-1! font-semibold marker:text-lg marker:text-[var(--theme-gradient-top-left)]"
                   key={perk}
                 >
                   {perk}
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
         </div>
-        <div className="w-full grid max-md:place-items-center md:justify-end">
-          <div className="max-md:w-11/12 h-[400px] 2xl:h-[500px] md:max-w-full md:h-full aspect-square mx-auto rounded-bl-full rounded-br-full outline-dashed outline-2 outline-offset-8 outline-[var(--theme-gradient-top-left)] bg-signature overflow-hidden grid grid-cols-2 grid-rows-2"></div>
+        <div className="w-full grid max-md:place-items-center md:justify-evenly">
+          <motion.div
+            variants={popUpAnimationVariant}
+            initial={"initial"}
+            whileInView="animate"
+            viewport={{ margin: "-190px 0px -230px 0px", once: true }}
+            className="min-h-[320px] lg:min-h-[360px] max-lg:max-w-[360px] lg:h-full lg:max-h-[400px]! aspect-[4/5] mx-auto rounded-bl-full rounded-br-full outline-dashed outline-2 outline-offset-8 outline-[var(--theme-gradient-top-left)] bg-gradient-to-br from-[var(--theme-gradient-top-left)]/70 to-[var(--theme-gradient-bottom-right)]/70 overflow-hidden flex flex-col"
+          >
+            <img
+              src="/confident-instructor.webp"
+              alt="teacher-image"
+              className="size-full object-cover object-top max-h-[560px]"
+            />
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
       {/* Student's Testimonials */}
-      <section className="py-[var(--uni-padding-value)] md:pb-[calc(var(--uni-padding-value)*3)]! bg-signature">
+      <motion.section
+        variants={slideUpAnimationVariant}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ margin: "-190px 0px -230px 0px", once: true }}
+        className="py-[var(--uni-padding-value)] md:pb-[calc(var(--uni-padding-value)*3)]! bg-signature"
+      >
         <div className="maximus">
           <div className="pt-4 pb-12 max-w-[500px] mx-auto prose prose-headings:my-2 md:prose-xl text-center prose-p:text-background">
             <h2 className="text-white">Student&apos;s Testimonials</h2>
@@ -426,7 +538,10 @@ export default function Home() {
                     className="md:flex-[0_0_33.33%] pl-4"
                   >
                     <div>
-                      <div className="p-4 bg-white rounded-3xl flex flex-col gap-5 drop-shadow-sm">
+                      <motion.div
+                        variants={popUpAnimationVariant}
+                        className="p-4 bg-white rounded-3xl flex flex-col gap-5 drop-shadow-sm"
+                      >
                         <div className="flex items-center gap-3">
                           <div className="rounded-full size-14 border-2 border-[var(--theme-gradient-top-left)] overflow-hidden">
                             <img
@@ -457,7 +572,7 @@ export default function Home() {
                         <p className="line-clamp-3 text-sm">
                           {student.message}
                         </p>
-                      </div>
+                      </motion.div>
                     </div>
                   </CarouselItem>
                 ))}
@@ -469,10 +584,16 @@ export default function Home() {
             </Carousel>
           </div>
         </div>
-      </section>
+      </motion.section>
       {/* Get in touch */}
       <section className="uni-padding-y max-md:py-30! relative -my-[calc(var(--uni-padding-value)*2)] md:bg-background md:rounded-tl-[calc(var(--uni-padding-value)*2)] md:rounded-br-[calc(var(--uni-padding-value)*2)] max-lg:px-2">
-        <div className="max-w-4xl sm:w-3/4 p-4 md:p-12 bg-signature flex flex-col gap-4 items-center rounded-xl md:rounded-[32px] mx-auto">
+        <motion.div
+          variants={popUpAnimationVariant}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ margin: "-190px 0px -230px 0px", once: true }}
+          className="max-w-4xl sm:w-3/4 p-4 md:p-12 bg-signature flex flex-col gap-4 items-center rounded-xl md:rounded-[32px] mx-auto"
+        >
           <div className="prose max-w-full md:prose-xl prose-headings:mt-0 prose-headings:mb-4 text-center">
             <h2 className="text-white">Get In Touch!</h2>
             <p className="mx-auto max-w-[400px] text-background text-sm">
@@ -497,7 +618,7 @@ export default function Home() {
               </span>
             </Button>
           </form>
-        </div>
+        </motion.div>
       </section>
     </>
   );

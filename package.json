@@ -1,7 +1,7 @@
 {
   "name": "etech",
-  "private": true,
   "type": "module",
+  "description": "A clean, responsive, and modern landing page template for online education platforms, built with ReactJS, React Router v7, TypeScript, Shadcn UI, and Tailwind CSS.",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
@@ -23,6 +23,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-fade": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.18.1",
     "isbot": "^5.1.27",
     "lucide-react": "^0.516.0",
     "react": "^19.1.0",
